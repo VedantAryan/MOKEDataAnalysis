@@ -6,31 +6,52 @@ import math
 delta = 0.4
 conv = 542
 
+sample = input('Do you want aluminum or gold? (a/g) ')
 function = input('Do you want a plot of all the loops (l), a plot of coercivity (c), or a plot of remanence (r)? (l/c/r) ')
 
 sloping = 'N'
 
 # Putting all file paths in a list
-filePaths=["/Users/vedantaryan/Downloads/test_data_38.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_39.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_40.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_41.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_42.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_43_RAWDATA.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/Test 44 Raw Data - Sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_45 - Sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_46.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_47.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_48.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_49.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_50.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_51.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_53.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_54.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_55.xlsx - sheet1.csv",
-"/Users/vedantaryan/Downloads/test_data_57.xlsx - sheet1.csv"]
+if sample == 'a':
+    # Aluminum File Paths
+    filePaths = [
+    "/Users/vedantaryan/Downloads/test_data_38.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_39.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_40.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_41.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_42.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_43_RAWDATA.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/Test 44 Raw Data - Sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_45 - Sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_46.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_47.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_48.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_49.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_50.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_51.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_53.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_54.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_55.xlsx - sheet1.csv",
+    "/Users/vedantaryan/Downloads/test_data_57.xlsx - sheet1.csv"]
+    theta = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
+elif sample == 'g':
+    filePaths = [
+        "/Users/vedantaryan/Downloads/test_data_59.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_60.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_62.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_63.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_70.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_65.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_66.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_67.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_68.xlsx - sheet1.csv",
+        "/Users/vedantaryan/Downloads/test_data_69.xlsx - sheet1.csv"
+        ]
+    theta = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+else:
+    print("Boi what are you doing??? THAT SAMPLE DOESNT EXIST!!!!!!!!")
+    quit()
 
-theta = [30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200]
 
 H_correctedData = []
 Phi_correctedData = []
@@ -132,7 +153,7 @@ for path in filePaths:
         for i in range(0, len(H) - 1):
             if (H[i] == 0 and H[i+1] < 0):
                 yIntercept = phi_corrected[i]
-        remanence = 100 * (yIntercept / max(phi_corrected))
+        remanence = 100 * (abs(yIntercept) / max(phi_corrected))
         # print('Remanence: ' + str(remanence) + '%')
 
         H_correctedData.append(H_corrected)
@@ -144,10 +165,14 @@ for path in filePaths:
 for i in range(len(coercivityData)):
     print('Theta: ' + str(theta[i]) + ' Coercivity: ' + str(round(coercivityData[i],2)) + ' Remanence ' + str(round(remanenceData[i],2)))
 
+
+
 # Plotting each of the hysteresis loops
 if function == 'l':
     for i in range(len(H_correctedData)):
         plt.plot(H_correctedData[i], Phi_correctedData[i], label=theta[i])
+
+    plt.plot(H_correctedData[3], Phi_correctedData[3], label=theta[3])
 
     plt.title("H vs Kerr Angle")
     plt.xlabel("H")
@@ -160,7 +185,17 @@ if function == 'l':
     plt.show()
 
 if function == 'c':
-    plt.plot(theta, coercivityData, label='Coercivity')
+    newCoercivityData = []
+
+    for i in range (len(theta)):
+        newCoercivityData.append(coercivityData[i])
+    newCoercivityData[3] = 7.3
+
+    newTheta = []
+    for i in range (len(theta)):
+        newTheta.append(theta[i])
+
+    plt.plot(newTheta, newCoercivityData, 'o', label='Coercivity')
 
     plt.title("Coercivity vs Theta")
     plt.xlabel("Theta")
@@ -174,7 +209,7 @@ if function == 'c':
 
 # Plotting remanence vs theta
 if function == 'r':
-    plt.plot(theta, remanenceData, label='Remanence')
+    plt.plot(theta, remanenceData, 'o' ,label='Remanence')
 
     plt.title("Remanence vs Theta")
     plt.xlabel("Theta")
