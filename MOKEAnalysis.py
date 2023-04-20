@@ -15,37 +15,37 @@ sloping = 'N'
 if sample == 'a':
     # Aluminum File Paths
     filePaths = [
-    "/Users/vedantaryan/Downloads/test_data_38.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_39.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_40.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_41.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_42.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_43_RAWDATA.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/Test 44 Raw Data - Sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_45 - Sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_46.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_47.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_48.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_49.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_50.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_51.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_53.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_54.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_55.xlsx - sheet1.csv",
-    "/Users/vedantaryan/Downloads/test_data_57.xlsx - sheet1.csv"]
+    "test_data_38.xlsx - sheet1.csv",
+    "test_data_39.xlsx - sheet1.csv",
+    "test_data_40.xlsx - sheet1.csv",
+    "test_data_41.xlsx - sheet1.csv",
+    "test_data_42.xlsx - sheet1.csv",
+    "test_data_43_RAWDATA.xlsx - sheet1.csv",
+    "Test 44 Raw Data - Sheet1.csv",
+    "test_data_45 - Sheet1.csv",
+    "test_data_46.xlsx - sheet1.csv",
+    "test_data_47.xlsx - sheet1.csv",
+    "test_data_48.xlsx - sheet1.csv",
+    "test_data_49.xlsx - sheet1.csv",
+    "test_data_50.xlsx - sheet1.csv",
+    "test_data_51.xlsx - sheet1.csv",
+    "test_data_53.xlsx - sheet1.csv",
+    "test_data_54.xlsx - sheet1.csv",
+    "test_data_55.xlsx - sheet1.csv",
+    "test_data_57.xlsx - sheet1.csv"]
     theta = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
 elif sample == 'g':
     filePaths = [
-        "/Users/vedantaryan/Downloads/test_data_59.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_60.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_62.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_63.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_70.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_65.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_66.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_67.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_68.xlsx - sheet1.csv",
-        "/Users/vedantaryan/Downloads/test_data_69.xlsx - sheet1.csv"
+        "test_data_59.xlsx - sheet1.csv",
+        "test_data_60.xlsx - sheet1.csv",
+        "test_data_62.xlsx - sheet1.csv",
+        "test_data_63.xlsx - sheet1.csv",
+        "test_data_70.xlsx - sheet1.csv",
+        "test_data_65.xlsx - sheet1.csv",
+        "test_data_66.xlsx - sheet1.csv",
+        "test_data_67.xlsx - sheet1.csv",
+        "test_data_68.xlsx - sheet1.csv",
+        "test_data_69.xlsx - sheet1.csv"
         ]
     theta = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
 else:
@@ -62,7 +62,7 @@ for path in filePaths:
     # opening CSV file
     with open(path, 'r') as file:
         csvreader = csv.reader(file)
-        # with open("/Users/vedantaryan/Downloads/test_data_53.xlsx - sheet1.csv", 'r') as file2:
+        # with open("//test_data_53.xlsx - sheet1.csv", 'r') as file2:
         #         csvreader2 = csv.reader(file2)
 
 
